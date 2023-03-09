@@ -8,6 +8,10 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class CaptJMClearCacheBundle extends AbstractBundle
 {
+    public function getPath(): string
+    {
+        return __DIR__;
+    }
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('Resources/config/services.php');
