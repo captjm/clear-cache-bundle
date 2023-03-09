@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\BufferedOutput;
 
 abstract class AbstractCacheController extends AbstractController
 {
-    #[Route('/admin/cache/clear', name: 'app_cache_clear')]
+    #[Route('/admin/cache/clear', name: 'captjm_clear_cache')]
     public function index(KernelInterface $kernel): Response
     {
         $application = new Application($kernel);
@@ -27,7 +27,7 @@ abstract class AbstractCacheController extends AbstractController
 
         $content = $output->fetch();
 
-        return $this->render("@ClearCacheBundle/cache_clear_page.html.twig", [
+        return $this->render("@CaptJMClearCache/cache_clear_page.html.twig", [
             "content" => $content,
         ]);
     }
