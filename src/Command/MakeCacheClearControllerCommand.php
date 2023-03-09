@@ -11,8 +11,8 @@ use Symfony\Component\Filesystem\Filesystem;
 use function Symfony\Component\String\u;
 
 #[AsCommand(
-    name: 'make:admin:dashboard',
-    description: 'Creates a new EasyAdmin Dashboard class',
+    name: 'make:cache-clear-controller',
+    description: 'Creates a new Cache Clear Controller class',
 )]
 class MakeCacheClearControllerCommand extends Command
 {
