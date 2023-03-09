@@ -1,5 +1,0 @@
-services:
-  CaptJM\ClearCacheBundle\Controller\CacheController:
-    calls:
-      - method: setContainer
-        arguments: [ '@service_container' ]
