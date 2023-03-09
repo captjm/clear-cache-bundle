@@ -2,6 +2,7 @@
 
 namespace CaptJM\ClearCacheBundle\Maker;
 
+use CaptJM\ClearCacheBundle\Controller\AbstractCacheController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
 use function Symfony\Component\String\u;
@@ -24,7 +25,7 @@ final class ClassMaker
      */
     public function make(string $generatedFilePathPattern, string $skeletonName, array $skeletonParameters): string
     {
-        $skeletonPath = sprintf('%s/%s', $this->kernel->locateResource('@CaptJMClearCacheBundle/Resources/skeleton'), $skeletonName);
+        $skeletonPath = sprintf('%s/%s', $this->kernel->locateResource('@CaptJMClearCacheBundle/src/Resources/skeleton'), $skeletonName);
         $generatedFileRelativeDir = u($generatedFilePathPattern)->beforeLast('/')->trimEnd('/')->toString();
         $generatedFileNamePattern = u($generatedFilePathPattern)->afterLast('/')->trimStart('/');
 
@@ -44,6 +45,7 @@ final class ClassMaker
 
         $skeletonParameters = array_merge($skeletonParameters, [
             'class_name' => u($generatedFileName)->beforeLast('.php')->toString(),
+            'entity_fqcn' => AbstractCacheController::class,
         ]);
 
         $this->fs->dumpFile($generatedFilePath, $this->renderSkeleton($skeletonPath, $skeletonParameters));
