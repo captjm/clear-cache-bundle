@@ -27,7 +27,7 @@ abstract class AbstractCacheController extends AbstractController
 
         $content = $output->fetch();
 
-        return $this->render("@CaptJMClearCache/cache_clear_page.html.twig", [
+        return $this->render("@CaptJMClearCacheBundle/cache_clear_page.html.twig", [
             "content" => $content,
         ]);
     }
